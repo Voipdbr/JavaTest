@@ -21,6 +21,8 @@ import com.sigabem.model.Input;
 @RequestMapping(value="/sigabem-api")
 public class CepService {
 
+	// This method create a API for localhost:8080/sigabem-api to consulting a CEP in localhost
+	
 	@GetMapping(value="/{cep}")	
     public ResponseEntity<Input> localcepService(@PathVariable(name = "cep") String cep){
 		
@@ -48,6 +50,8 @@ public class CepService {
 
         return ResponseEntity.ok(enderecoTO).getBody();
     }
+	
+	// This method is the Service that queries the CEP in the external api.
 	
     public Input cepService(String cep){
 		
