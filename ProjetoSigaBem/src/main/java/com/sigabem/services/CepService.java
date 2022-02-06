@@ -17,12 +17,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.sigabem.exceptionservice.InputOfCEPNotFoundException;
 import com.sigabem.model.Input;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value="API de consulta simples")
 @Controller
 @RequestMapping(value="/sigabem-api")
 public class CepService {
 
 	// This method create a API for localhost:8080/sigabem-api to consulting a CEP in localhost
 	
+	@ApiOperation(value="Esta é uma operação na qual o serviço de consulta do site (viacep.com.br) será executado e implementado em uma API localhost, podendo ser visualizado a partir do serviço local. (No início do projeto precisei criar este Serviço para visualizar os retornos dos parâmetros criados no model\r\n"
+			+ " e se estava tudo ok.).")
 	@GetMapping(value="/{cep}")	
     public ResponseEntity<Input> localcepService(@PathVariable(name = "cep") String cep){
 		
