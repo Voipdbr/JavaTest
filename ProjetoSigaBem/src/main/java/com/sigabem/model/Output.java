@@ -38,43 +38,91 @@ public class Output implements Serializable {
 		this.dataConsulta = dataConsulta;
 	}
 	
-	public Output(double doubleValue, String format, String format2, String format3, Double test, LocalDate now,
-			LocalDate now2, Object object, Object object2) {
-		// TODO Auto-generated constructor stub
+	public Output() {
 	}
 
+	
+	
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 	public Double getPeso() {
 		return peso;
 	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
 	public String getCepOrigem() {
 		return cepOrigem;
 	}
+
+	public void setCepOrigem(String cepOrigem) {
+		this.cepOrigem = cepOrigem;
+	}
+
 	public String getCepDestino() {
 		return cepDestino;
 	}
+
+	public void setCepDestino(String cepDestino) {
+		this.cepDestino = cepDestino;
+	}
+
 	public String getNomeDestinatario() {
 		return nomeDestinatario;
 	}
+
+	public void setNomeDestinatario(String nomeDestinatario) {
+		this.nomeDestinatario = nomeDestinatario;
+	}
+
 	public Double getVlTotalFrete() {
 		return vlTotalFrete;
 	}
+
+	public void setVlTotalFrete(Double vlTotalFrete) {
+		this.vlTotalFrete = vlTotalFrete;
+	}
+
 	public LocalDate getDataPrevistaEntrega() {
 		return dataPrevistaEntrega;
 	}
+
+	public void setDataPrevistaEntrega(LocalDate dataPrevistaEntrega) {
+		this.dataPrevistaEntrega = dataPrevistaEntrega;
+	}
+
 	public LocalDate getDataConsulta() {
 		return dataConsulta;
 	}
-	
-	
+
+	public void setDataConsulta(LocalDate dataConsulta) {
+		this.dataConsulta = dataConsulta;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+    public String toString() {
+        return "ConsultaRealizada{" +
+                "nomeDestinatario='" + 
+        		nomeDestinatario + 
+        		'\'' +
+                ", vlTotalFrete=" + 
+        		vlTotalFrete +
+                ", dataPrevistaEntrega=" +
+        		dataPrevistaEntrega +
+                '}';
+    }
 	
 
 }
