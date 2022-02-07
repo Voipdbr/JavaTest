@@ -87,12 +87,12 @@ No caso o projeto deve fazer alguns cálculos, que aplicarão descontos ou não 
 ### Parâmetros obrigatórios para todos RequestMethods
 
 ```json
-    {
+{
     "cepDestino": "string",
     "cepOrigem": "string",
     "nomeDestinatario": "string",
     "peso": 0
-    }
+}
 ```
 
 ---
