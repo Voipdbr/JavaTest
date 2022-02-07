@@ -1,42 +1,119 @@
-# Teste de seleção para vaga de Java
+<img src="../images/voip.gif" width="500px"/>
 
-## Faça um fork desse projeto e siga as instruções a seguir utilizando esse projeto.
+---
 
-# Pré-requisitos
+# PROJETO SIGABEM
 
-Implementar apenas a API (Backend)
-Versão Java +8 (caso seja Java 8, verificar compatibilidade da sua IDE)
-Versão Spring Boot >= 2.4
-Banco de dados fica a seu critério (Sql, NoSql)
-Seu projeto deve obrigatoriamente ter as anotações: @Repository, @Entity e @Controller
-Documentação mínima da API (Swagger ou documento PDF)
+O projeto sigabem é um desafio desenvolvido para ser uma aplicação (Back-end) onde o cliente poderá fazer a consulta do valor que será pago no frete.
 
-# Objetivo
-Implementar para empresa de transporte de cargas SigaBem o endpoint para o cálculo do preço do frete:
+Nesse aspecto foi designado que o projeto tenha algumas singularidades.
 
-Você deve calcular o valor total do frete e a data prevista da entrega.
+---
 
-Considerar regras para calcular o valor do frete:
- * CEPs com DDDs iguais tem 50% de desconto no valor do frete e entrega prevista de 1 dia
- * CEPs de estados iguais tem 75% de desconto no valor do frete e entrega prevista de 3 dias
- * CEPs de estados diferentes não deve ser aplicado o desconto no valor do frete e entrega prevista de 10 dias
- * O valor do frete é cobrado pelo peso da encomenda, o valor para cada KG é R$1,00
+## Ferramentas com Pré-requisito
 
-Seu input de entrada deve ser “peso”, “cepOrigem”, “cepDestino” e “nomeDestinatario“
+---
 
-Você utilizará a API gratuita de consulta de CEP abaixo: 
-Documentação da API: https://viacep.com.br/
-Exemplo do GET: https://viacep.com.br/ws/<CEP_A_CONSULTAR>/json/
+Foi solicitado que as ferramentas no qual construiríamos a aplicação fosse desenvolvido com:
 
-Endpoint pode ser público
-Response/Output deve possuir: “vlTotalFrete” e “dataPrevistaEntrega”, “cepOrigem” e “cepDestino”
-Deve ser persistido no banco os valores da cotação os valores consultados: “peso”, “cepOrigem”, “cepDestino”, “nomeDestinatario”, “vlTotalFrete”, “dataPrevistaEntrega” e “dataConsulta”
+- Java +8 ✔
 
+- Spring Boot | Versão >= (Maior ou igual) a 2.4 ✔
 
+Foi solicitado também, que obrigatoriamente deve ter as anotações:
 
-# Critérios de avaliação:
- * Implementação das regras de negócios para o cálculo do frete
- * Boas práticas de programação, arquitetura  e padrões de projetos
+- @Repository ✔
 
-# Entrega: 
- * Disponibilizar um link do repositório no GitHub e encaminhar para developer@cd2.com.br
+- @Entity ✔
+
+- @Controller ✔
+
+E a documentação mínima da API seria:
+
+- Swagger ✔
+
+ou
+
+- Documentação em PDF
+
+---
+
+## Aspectos
+
+---
+
+No caso o projeto deve fazer alguns cálculos, que aplicarão descontos ou não no frete do cliente.
+
+- CEPs com DDDs iguais tem 50% de desconto no valor do frete e entrega prevista de 1 dia
+
+- CEPs de estados iguais tem 75% de desconto no valor do frete e entrega prevista de 3 dias
+
+- CEPs de estados diferentes não deve ser aplicado o desconto no valor do frete e entrega prevista de 10 dias
+
+- O valor do frete é cobrado pelo peso da encomenda, o valor para cada KG é R$1,00
+
+---
+
+## URL's utilizadas e criadas no projeto.
+
+---
+
+- ### https://viacep.com.br/ws/{CEP_A_CONSULTAR}/json/ Method = GET
+
+#### A api utilizada é gratuita e qualquer pessoa pode consultar os dados colocando um CEP valido no campo (CEP_A_CONSULTAR), assim um json será respondido para que seja consumido por um serviço de terceiros.
+
+- ### http://localhost:8080/sigabem-api/{cepCliente} Method = GET
+
+#### A url citada tem como funcionalidade a mesma da api acima, eu desenvolvi esta url para verificar a disponibilidade de alguns métodos e serviços no projeto.
+
+- ### http://localhost:8080/sigabem-api/output Method = GET
+
+#### Aqui é listado todas as consultas realizadas e salvas no banco de dados.
+
+##### OBS: criei as 3 URL's de consulta não para ser a mesma função, e sim para ter 3 métodos de Request e ser feito as consultas nos três formatos. 
+
+- ### http://localhost:8080/sigabem-api/input/{PESO_PRODUTO}/{CEP_DE_ORIGEM}/{CEP_DE_DESTINO}/{NOME_PROPRIETARIO} Method = POST | RequestMethod = PATHVARIABLE
+
+#### Criação de dados no banco de dados em que foi realizado o levantamento sobre o valor total do frete com ou sem desconto. (Esta busca é feita com PathVariable em que a api simula uma busca sendo realizada a partir da implementação de pastas na url de busca).
+
+- ### http://localhost:8080/sigabem-api/input/query Method = POST | RequestMethod = QUERY
+
+#### Criação de dados no banco de dados em que foi realizado o levantamento sobre o valor total do frete com ou sem desconto. (Esta busca é feita com RequestParam, neste caso, os comandos de acesso são utilizados pela url Query, onde na url estarão disponíveis os dados necessários para a consulta).
+
+- ###  http://localhost:8080/sigabem-api/input Method = POST | RequestMethod = JSON
+
+#### Criação de dados no banco de dados em que foi realizado o levantamento sobre o valor total do frete com ou sem desconto. (Esta pesquisa é feita com RequestBody em JSON).
+
+---
+
+## Documentação e Teste
+
+---
+
+Para fazer os testes das API's você pode utilizar algum dos métodos que disponibilizei.
+
+1 - Swagger
+
+Swagger, é basicamente uma ferramenta que desenvolvedores utilizam para documentar funcionalidades, aplicabalidade e retornos das API's desenvolvidas.
+
+Com essa ferramenta você fica mais tranquilo para fazer consultas das funcionalidades das API's.
+
+Após a execução do projeto, você terá que acessar o link (http://localhost:8080/swagger-ui/index.html) para fazer as consultas nas API's, a aplicação é super simples e tem exemplos para seguir.
+
+2 - Insomnia
+
+Insomnia, é basicamente uma ferramenta que facilita para desenvolvedores fazerem consultas das API's.
+
+Você pode fazer o Download da ferramenta por aqui (https://insomnia.rest/download).
+
+Disponibilizei o meu template JSON do Insomnia que utilizei para fazer os testes, o JSON está na pasta Insomnia neste Repositório, mais especificamente (https://github.com/Voipdbr/JavaTest/tree/main/Insomnia).
+
+---
+
+# Considerações finais
+
+---
+
+Esse desafio foi realmente intenso, deram poucos dias para desenvolvermos a aplicação e criar todas as funcionalidades, mas é como diz “O homem erudito é um descobridor de fatos que já existem – mas o homem sábio é um criador de valores que não existem e que ele faz existir.“ [Albert Einstein].
+
+<img src="../images/albert.gif" width="300px"/>
