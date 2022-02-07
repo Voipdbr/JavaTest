@@ -102,7 +102,7 @@ Após a execução do projeto, você terá que acessar o link (http://localhost:
 
 2 - Insomnia
 
-Insomnia, é basicamente uma ferramenta que facilita para desenvolvedores fazerem consultas das API's.
+Insomnia, é basicamente uma ferramenta que facilita para desenvolvedores fazerem consultas e testes das API's.
 
 Você pode fazer o Download da ferramenta por aqui (https://insomnia.rest/download).
 
