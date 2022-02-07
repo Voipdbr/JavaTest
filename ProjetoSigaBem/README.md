@@ -84,6 +84,17 @@ No caso o projeto deve fazer alguns cálculos, que aplicarão descontos ou não 
 
 #### Criação de dados no banco de dados em que foi realizado o levantamento sobre o valor total do frete com ou sem desconto. (Esta pesquisa é feita com RequestBody em JSON).
 
+### Parâmetros obrigatórios para todos RequestMethods
+
+```json
+    {
+    "cepDestino": "string",
+    "cepOrigem": "string",
+    "nomeDestinatario": "string",
+    "peso": 0
+    }
+```
+
 ---
 
 ## Documentação e Teste
